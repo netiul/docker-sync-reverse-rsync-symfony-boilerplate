@@ -1,0 +1,21 @@
+version: '3'
+services:
+  symfony:
+    build:
+      context: docker-symfony
+    ports:
+      - 80:80
+    volumes:
+      - symfony-sync:/var/www/app:cached,nocopy
+      - symfony-var-sync:/var/www/app/var:cached,nocopy
+      - symfony-vendor-sync:/var/www/app/vendor:cached,nocopy
+      - symfony-nodemodules-sync:/var/www/app/node_modules:cached,nocopy
+volumes:
+  symfony-sync:
+    external: true
+  symfony-var-sync:
+    external: true
+  symfony-vendor-sync:
+    external: true
+  symfony-nodemodules-sync:
+    external: true
